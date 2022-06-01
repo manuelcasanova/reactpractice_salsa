@@ -18,7 +18,7 @@ function App() {
   }
 
   function removeStep(stepId) {
-
+    setSteps(steps.filter(step => step.id !== stepId)) //Gives me a new array that contains all the elements that are not this book.
   }
 
   
@@ -28,7 +28,7 @@ function App() {
       <NewStepForm addStep={addStep} getNextId={getNextId}/>
     {/* {steps.map(step => (<div>Id: {step.id} - Step: {step.title} - Level: {step.level} </div>))} */}
     {/* {steps.map(step => <NewStepForm key={step.id} {...step} />)} */}
-    {steps.map(step => <Step key={step.id} step={step} />)}
+    {steps.map(step => <Step key={step.id} step={step} removeStep={removeStep}/>)}
 
 
     </div>
