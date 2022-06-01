@@ -12,12 +12,17 @@ function changeStep(e) {
 function onSubmit(e) {
   e.preventDefault();
   const step = {
-    id: Math.floor(Math.random(100)),
+    id: props.getNextId(),
     title,
     level
   }
   props.addStep(step);
 }
+
+// function resetForm() {
+//   setTitle("");
+//   setLevel("");
+// }
 
   return(<form onSubmit={onSubmit}>
     <label htmlFor="title">Step</label>
@@ -26,7 +31,7 @@ function onSubmit(e) {
     <label htmlFor="level">Level</label>
     <input type="text" name="level" value={level} onChange={e => setLevel(e.target.value)}/>
     <p></p>
-    <button type="Submit">Submit</button>
+    <button type="Submit" /*onClick={resetForm} value="Reset"*/>Submit</button>
     <p></p>
   </form>);
 }
