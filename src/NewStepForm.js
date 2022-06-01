@@ -17,12 +17,13 @@ function onSubmit(e) {
     level
   }
   props.addStep(step);
+  resetForm();
 }
 
-// function resetForm() {
-//   setTitle("");
-//   setLevel("");
-// }
+function resetForm() {
+  setTitle("");
+  setLevel("");
+}
 
   return(<form onSubmit={onSubmit}>
     <label htmlFor="title">Step</label>
@@ -31,7 +32,7 @@ function onSubmit(e) {
     <label htmlFor="level">Level</label>
     <input type="text" name="level" value={level} onChange={e => setLevel(e.target.value)}/>
     <p></p>
-    <button type="Submit" /*onClick={resetForm} value="Reset"*/>Submit</button>
+    <button type="Submit">Submit</button>
     <p></p>
   </form>);
 }
