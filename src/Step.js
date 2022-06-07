@@ -1,13 +1,13 @@
-export default function Step({step, removeStep}) {
+export default function Step({step, deleteStep}) {
 
   // function removeButtonClick(e) {
-  //   removeStep(step.id);
+  //   deleteStep(step.id);
   // }
 
   return (
     <div>
-      Id: {step.id} - Step: {step.title} - Level: {step.level}
-      <button onClick={() => removeStep(step.id)}>Remove</button>
+      Id: {step.id} - Step: {step.title} - Level: {step.level_id} 
+      <button onClick={() => deleteStep(step.id)}>Remove</button>
     </div>
   )
 }
