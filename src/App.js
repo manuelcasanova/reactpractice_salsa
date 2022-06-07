@@ -1,11 +1,34 @@
-import {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import NewStepForm from './NewStepForm';
 import Step from './Step';
+import axios from 'axios';
 
 function App() {
-  const [steps, setSteps] = useState([{id:0, title: "Basic step", level: "Beginner"}])
-  const [id, setId] = useState(1);
+  const [steps, setSteps] = useState([])
+  const [id, setId] = useState(4);
+  // const [title, setTitle] = useState("");
+  // const [level, setLevel] = useState("");
+
+  
+const stepsURL = 'http://localhost:8001/steps'
+// const levelsURL = 'http://localhost:8001/levels'
+
+useEffect(() => {
+  axios.get(stepsURL)
+  .then(function (res) {
+    setSteps([...res.data])
+  })
+}, [])
+
+
+// useEffect(() => {
+//   Promise.all([
+//     axios.get(stepsURL),
+//   ]).then((all) => {
+//     setSteps(prev => ({...prev, steps:all[0].data}))
+//   })
+// }, [])
 
   function getNextId() {
     setId(prevId => prevId + 1)
@@ -13,12 +36,26 @@ function App() {
   }
   
   function addStep(step) {
-    // const step = {id: 1, title: "Basic step forward and backwards", level: "Beginner"}
-    setSteps(prevSteps => [...steps, step])
-  }
+    // console.log(step)
+  
+    // setSteps([step, ...steps])
+    // console.log('step -->', step, 'steps -->', steps)
+    return axios.post(`http://localhost:8001/steps/`,
+    step) //payload (see inspect)
+    .then(response => {
+      console.log("Step added:", response.data);
+      setSteps([...steps, response.data])
+      return response
+    })
+  } 
 
-  function removeStep(stepId) {
-    setSteps(steps.filter(step => step.id !== stepId)) //Gives me a new array that contains all the elements that are not this book.
+  function deleteStep(stepId) {
+    return axios.delete(`http://localhost:8001/delete/${stepId}`)
+    .then (res => {
+      setSteps(steps.filter(step => step.id !== stepId))
+      return res
+    })
+    // setSteps(steps.filter(step => step.id !== stepId)) //Gives me a new array that contains all the elements that are not this book.
   }
 
   
@@ -26,9 +63,7 @@ function App() {
     <div className="App">
       <h3>Casino (Cuban Salsa) steps</h3>
       <NewStepForm addStep={addStep} getNextId={getNextId}/>
-    {/* {steps.map(step => (<div>Id: {step.id} - Step: {step.title} - Level: {step.level} </div>))} */}
-    {/* {steps.map(step => <NewStepForm key={step.id} {...step} />)} */}
-    {steps.map(step => <Step key={step.id} step={step} removeStep={removeStep}/>)}
+    {steps.map(step => <Step key={step.id} step={step} deleteStep={deleteStep}/>)}
 
 
     </div>
