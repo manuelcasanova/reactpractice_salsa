@@ -12,10 +12,11 @@ function changeStep(e) {
 function onSubmit(e) {
   e.preventDefault();
   const step = {
-    id: props.getNextId(),
+    // id: props.getNextId(),
     title,
     level
   }
+  // console.log(step)
   props.addStep(step);
   resetForm();
 }
@@ -32,7 +33,7 @@ function resetForm() {
     <label htmlFor="level">Level</label>
     <input type="text" name="level" value={level} onChange={e => setLevel(e.target.value)}/>
     <p></p>
-    <button type="Submit">Submit</button>
+    <button type="Submit">Add step</button>
     <p></p>
   </form>);
 }
