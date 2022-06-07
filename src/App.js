@@ -55,7 +55,6 @@ useEffect(() => {
       setSteps(steps.filter(step => step.id !== stepId))
       return res
     })
-    // setSteps(steps.filter(step => step.id !== stepId)) //Gives me a new array that contains all the elements that are not this book.
   }
 
   
