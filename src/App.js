@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import NewStepForm from './NewStepForm';
+// import EditStepForm from './EditStepForm';
 import Step from './Step';
 import axios from 'axios';
 
@@ -49,6 +50,14 @@ useEffect(() => {
     })
   } 
 
+  function editStep(stepId) {
+    return axios.put(`http://localhost:8001/steps/edit/${stepId}`)
+    .then (response => {
+      console.log("Step edited:", response.data);
+      setSteps([...steps])
+    })
+  }
+
   function deleteStep(stepId) {
     return axios.delete(`http://localhost:8001/delete/${stepId}`)
     .then (res => {
@@ -56,14 +65,12 @@ useEffect(() => {
       return res
     })
   }
-
   
   return (
     <div className="App">
       <h3>Casino (Cuban Salsa) steps</h3>
       <NewStepForm addStep={addStep} getNextId={getNextId}/>
-    {steps.map(step => <Step key={step.id} step={step} deleteStep={deleteStep}/>)}
-
+    {steps.map(step => <Step key={step.id} step={step} deleteStep={deleteStep} editStep={editStep}/>)}
 
     </div>
   );
