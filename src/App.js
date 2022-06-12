@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import NewStepForm from './NewStepForm';
-// import EditStepForm from './EditStepForm';
-import Step from './Step';
+import NewStepForm from './components/NewStepForm';
+// import EditStepForm from './components/EditStepForm';
+import Step from './components/Step';
 import axios from 'axios';
 
 function App() {
