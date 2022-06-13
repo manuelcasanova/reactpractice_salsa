@@ -1,14 +1,11 @@
 export default function Step({step, deleteStep, editStep}) {
 
-  // function removeButtonClick(e) {
-  //   deleteStep(step.id);
-  // }
-
   return (
     <div>
-      Id: {step.id} - Step: {step.title} - Level: {/*name*/} Id: {step.level_id}
-      <button onClick={() => editStep(step.id)}>Edit</button>
-      <button onClick={() => deleteStep(step.id)}>Delete</button>
+      {/* step.step_title, etc. come from the names given in the query getAllSteps */}
+      Step Id: {step.step_id} - Name: {step.step_title} - Level: {step.level_title} Level Id: {step.level_id}
+      <button onClick={() => editStep(step.step_id)}>Edit</button>
+      <button onClick={() => deleteStep(step.step_id)}>Delete</button>
     </div>
   )
 }
