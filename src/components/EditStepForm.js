@@ -1,40 +1,29 @@
 import React, { useState } from "react";
 
-import Level from "./Level.js"
+export default function EditStepForm(props) {
 
-export default function NewStepForm(props) {
+  const [title, setTitle] = useState("");
+  const [level, setLevel] = useState("");
 
-const [title, setTitle] = useState("");
-const [level, setLevel] = useState("");
-
-function changeStep(e) {
-  setTitle(e.target.value);
-}
-
-function onSubmit(e) {
-  e.preventDefault();
-  const step = {
-    // id: props.getNextId(),
-    title,
-    level
+  function changeStep(e) {
+    setTitle(e.target.value);
   }
-  // console.log(step)
-  props.addStep(step);
-  resetForm();
-}
 
-function resetForm() {
-  setTitle("");
-  setLevel("");
-}
+  function onSubmit(e) {
+    e.preventDefault();
+    const step = {
+      title,
+      level
+    }
+    // console.log(step)
+    props.addStep(step);
+    resetForm();
+  }
 
-  return(<form onSubmit={onSubmit}>
-    <label htmlFor="title">Step</label>
-    <input type="text" name="title" value={title} onChange={changeStep}/>
-    <p></p>
-      <Level />
-    <p></p>
-    <button type="Submit">Add step</button>
-    <p></p>
-  </form>);
+  function resetForm() {
+    setTitle("");
+    setLevel(setLevel); //The default value of the input form for level is the last one used.
+  }
+
+  return (<div>Edit Step Form</div>);
 }
