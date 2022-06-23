@@ -1,26 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 
-export default function NewStepForm(props) {
+export default function NewStepForm({refresh}) {
 
   const [title, setTitle] = useState("");
   const [level, setLevel] = useState("Beginner");
-  const [steps, setSteps] = useState([])
+
   const stepsURL = 'http://localhost:8001/steps'
 
   function addStep(step) {
-    // console.log(step)
-    // setSteps([step, ...steps])
-    // console.log('steps -->', steps)
-    return axios.post(`http://localhost:8001/steps/`,
+    //Shows in console
+    console.log("Step added:", step)
+  
+    return axios.post(stepsURL,
       step) //payload (see inspect)
-      // .then(() => {
-      //   axios.get(stepsURL)
-      //     .then(function (res) {
-      //       setSteps([...res.data])
-      //     })
-      // })
-  } //ASK IAN
+  } 
 
   function changeStep(e) {
     setTitle(e.target.value);
@@ -53,11 +47,10 @@ export default function NewStepForm(props) {
 
 
     <div>
-
     
       <label htmlFor="title">Level</label>
       <select value={level} onChange={e => setLevel(e.target.value)} >
-        {/* {Try to get these from the db so if we create more leveles they appear automatically} */}
+        {/* {Try to get these from the db so if we create more levels they appear automatically} */}
         <option>Beginner</option>
         <option>Intermediate</option>
         <option>Intermediate 2</option>
