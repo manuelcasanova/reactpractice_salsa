@@ -10,9 +10,8 @@ function App() {
 
   return (
     <div className="App">
-
-      <NewStepForm setRefresh={setRefresh}/>
-      <StepList setRefresh={setRefresh}/>
+      <NewStepForm refresh={refresh} setRefresh={setRefresh}/>
+      <StepList refresh={refresh} setRefresh={setRefresh}/>
       
     </div>
   );
