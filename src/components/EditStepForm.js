@@ -1,8 +1,9 @@
 import React, {Fragment, useState } from "react";
+import axios from 'axios'
 
 const stepsURL = 'http://localhost:8001/steps'
 
-const EditStepForm = ({step}) => {
+const EditStepForm = ({step, refresh, setRefresh}) => {
  //console.log(step) //to see how the props gets here!
 
 const [title, setTitle] = useState(step.step_title)
@@ -18,8 +19,8 @@ const updateStep = async(e) => {
       method: "PUT",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(body),
-      
     })
+    setRefresh(!refresh)
   } catch (err) {
     console.error(err.message)
   }
