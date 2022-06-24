@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import EditStepForm from './EditStepForm';
 
-export default function NewStepList ({setRefresh}) {
+export default function NewStepList ({refresh, setRefresh}) {
 
   const stepsURL = 'http://localhost:8001'
 
@@ -14,18 +14,7 @@ useEffect(() => {
   .then(function (res) {
     setSteps([...res.data])
   })
-}, [steps])
-
-// const deleteStep = async(id) => {
-//   try {
-//     const deleteStep = await fetch(`${stepsURL}delete/${id}`, {
-//       method: "DELETE"
-//     })
-//     window.location = "/"
-//   } catch (err) {
-//     console.error(err.message)
-//   }
-// }
+}, [refresh]) 
 
 function deleteStep(stepId) {
   return axios.delete(`${stepsURL}/delete/${stepId}`)
@@ -38,7 +27,6 @@ function deleteStep(stepId) {
 } 
 
 return (
-
 
 <table className="table">
 
@@ -61,7 +49,7 @@ return (
     <td>{step.step_title}</td>
     <td>{step.level_title}</td>
     <td>{step.level_id}</td>
-    <td><EditStepForm step={step} setRefresh={setRefresh}/></td>
+    <td><EditStepForm step={step} refresh={refresh} setRefresh={setRefresh}/></td>
         <td><button onClick={() => deleteStep(step.step_id)}>Delete</button></td>
   </tr>)}
 </tbody>
