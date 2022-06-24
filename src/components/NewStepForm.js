@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from 'axios';
 
-export default function NewStepForm({refresh}) {
+export default function NewStepForm({refresh, setRefresh}) {
 
   const [title, setTitle] = useState("");
   const [level, setLevel] = useState("Beginner");
@@ -14,6 +14,9 @@ export default function NewStepForm({refresh}) {
   
     return axios.post(stepsURL,
       step) //payload (see inspect)
+      .then(() => {
+        setRefresh(!refresh) //HERE TO REFRESH WITH NEW DATA AFTER POSTING!!! 
+      })
   } 
 
   function changeStep(e) {
@@ -36,13 +39,15 @@ export default function NewStepForm({refresh}) {
     setLevel(setLevel); //The default value of the input form for level is the last one used.
   }
 
+
+
   return (
   
   
   <form onSubmit={onSubmit}>
     <h3>Casino (Cuban Salsa) steps</h3>
     <label htmlFor="title">Step</label>
-    <input type="text" name="title" value={title} onChange={changeStep} />
+    <input type="text" name="title" value={title} onChange={changeStep}/>
     <p></p>
 
 
