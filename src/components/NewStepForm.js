@@ -47,7 +47,8 @@ export default function NewStepForm({refresh, setRefresh}) {
   <form className="add_step_form" onSubmit={onSubmit}>
     <p>Create a new step</p>
     <label className="add_step_title" htmlFor="title">Step</label>
-    <input className="input_box" type="text" name="title" value={title} onChange={changeStep}/>
+    {/* required after type="text" for message Please fill out this field */}
+    <input className="input_box" type="text" required name="title" value={title} onChange={changeStep}/>
     <p></p>
 
 
