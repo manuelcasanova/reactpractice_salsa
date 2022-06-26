@@ -102,6 +102,13 @@ float: left;
   justify-content: flex-end;
 }
 
+.circle-plus {
+  color: grey;
+  font-size: 2rem;
+  cursor: pointer;
+  margin-bottom: 25px;
+}
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -169,6 +176,14 @@ float: left;
   width: 3px;
   background-color: var(--white-color);
   transform: .5s;
+}
+
+.modal-body {
+  padding-top: 0px;
+}
+
+.modal-body label {
+  margin-top: 10px;
 }
 
 .showw {
