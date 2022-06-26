@@ -44,17 +44,17 @@ export default function NewStepForm({refresh, setRefresh}) {
   return (
   
   
-  <form onSubmit={onSubmit}>
-    <h3>Casino (Cuban Salsa) steps</h3>
-    <label htmlFor="title">Step</label>
-    <input type="text" name="title" value={title} onChange={changeStep}/>
+  <form className="add_step_form" onSubmit={onSubmit}>
+    <p>Create a new step</p>
+    <label className="add_step_title" htmlFor="title">Step</label>
+    <input className="input_box" type="text" name="title" value={title} onChange={changeStep}/>
     <p></p>
 
 
-    <div>
+    <div className="level_input">
     
-      <label htmlFor="title">Level</label>
-      <select value={level} onChange={e => setLevel(e.target.value)} >
+      <label className="add_step_title" htmlFor="title">Level</label>
+      <select className="input_box" value={level} onChange={e => setLevel(e.target.value)} >
         {/* {Try to get these from the db so if we create more levels they appear automatically} */}
         <option>Beginner</option>
         <option>Intermediate</option>
@@ -67,7 +67,7 @@ export default function NewStepForm({refresh, setRefresh}) {
     </div>
 
     <p></p>
-    <button type="Submit">Add step</button>
+    <button className="Button_Submit" type="Submit">Add step</button>
     <p></p>
   </form>);
 }

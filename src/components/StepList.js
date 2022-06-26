@@ -32,10 +32,10 @@ return (
 
 <thead>
       <tr>
-        <th>Step ID</th>
         <th>Step name</th>
         <th>Level</th>
-        <th>Level ID</th>
+        {/* <th>Level ID</th> */}
+        <th>Step ID</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
@@ -45,12 +45,12 @@ return (
 
 {steps.map(step => 
   <tr key={step.step_id}>
-    <td>{step.step_id}</td>
     <td>{step.step_title}</td>
     <td>{step.level_title}</td>
-    <td>{step.level_id}</td>
+    {/* <td>{step.level_id}</td> */}
+    <td>{step.step_id}</td>
     <td><EditStepForm step={step} refresh={refresh} setRefresh={setRefresh}/></td>
-        <td><button onClick={() => deleteStep(step.step_id)}>Delete</button></td>
+        <td><button className="Button_Delete" onClick={() => deleteStep(step.step_id)}>Delete</button></td>
   </tr>)}
 </tbody>
 
@@ -63,49 +63,3 @@ return (
   )
 }
 
-
-
-// import React, {useState, useEffect} from 'react';
-// import axios from 'axios';
-
-// import Step from "./Step"
-
-// export default function StepList ({setRefresh}) {
-  
-// const [steps, setSteps] = useState([])
-
-// const stepsURL = 'http://localhost:8001/steps'
-
-
-// //ASK IAN WHY WITH USE EFFECT THE LIST OF STEPS DOES NOT "REFRESH". WITHOUT IT, IT DOES, BUT IT DOES NOT STOP. solved with window.location = "/" in NewStepForm line 23
-// useEffect(() => {
-//   axios.get(stepsURL)
-//     .then(function (res) {
-//       setSteps([...res.data])
-//     })
-    
-// }, [steps]) //[] , [steps]
-// // const getAllSteps = async() => {
-// //   try {
-// //     const response = await fetch(stepsURL)
-// //     const jsonData = await response.json();
-// //     setSteps(jsonData)
-// //   } catch (err) {
-// //     console.error(err.message)
-// //   }
-// // }
-
-// // useEffect(() => {
-// //   getAllSteps();
-// // }, [])
-
-
-//   return (
-//     <div>
-      
-//       {steps.map(step => <Step key={step.step_id} step={step} />)}
-      
-//     </div>
-//   )
-
-// }

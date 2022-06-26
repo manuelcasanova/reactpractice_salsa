@@ -29,12 +29,12 @@ const updateStep = async(e) => {
   return <Fragment>
 
 {/* <!-- Button to Open the Modal --> */}
-<button type="button" data-toggle="modal" data-target={`#id${step.step_id}`}>
+<button className="Button_Edit" type="button" data-toggle="modal" data-target={`#id${step.step_id}`}>
   Edit
 </button>
 
 {/* <!-- The Modal --> */}
-<div className="modal" id={`id${step.step_id}`} 
+<div className="modal" id={`id${step.step_id}`} //I changed to modal1 from modal to understand CSS
 // onClick = {() => setTitle(step.step_title)}
 >
   <div className="modal-dialog">
@@ -75,11 +75,12 @@ const updateStep = async(e) => {
       
       <div className="modal-footer">
         <button 
+        className="Button_Edit" 
         type="button" 
         data-dismiss="modal" 
         onClick={e => updateStep(e)}
         >Edit</button>
-        <button type="button" data-dismiss="modal" 
+        <button className="Button_Close" type="button" data-dismiss="modal" 
         onClick = {() => setTitle(step.step_title)}
         >Close</button>
       </div>
