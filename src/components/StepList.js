@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import EditStepForm from './EditStepForm';
 
-export default function NewStepList ({level, setLevel, step, setStep}) {
+export default function NewStepList ({level, setLevel, step, setStep, levels, setLevels}) {
 
   const stepsURL = 'http://localhost:8001'
 
@@ -53,7 +53,7 @@ return (
     <td>{step.level_title}</td>
     {/* <td>{step.level_id}</td> */}
     <td>{step.step_id}</td>
-    <td><EditStepForm step={step} level={level} setLevel={setLevel}/></td>
+    <td><EditStepForm step={step} level={level} setLevel={setLevel} levels={levels} setLevels={setLevels}/></td>
         <td><button className="Button_Delete" onClick={() => deleteStep(step.step_id)}>Delete</button></td>
   </tr>)}
 </tbody>

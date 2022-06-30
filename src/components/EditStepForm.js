@@ -1,15 +1,29 @@
-import React, {Fragment, useState } from "react";
-// import axios from 'axios'
+import React, {Fragment, useState, useEffect } from "react";
+import axios from 'axios'
 
-const stepsURL = 'http://localhost:8001/steps'
+const stepsURL = 'http://localhost:8001'
 
 const EditStepForm = ({step, level, setLevel}) => {
 //  console.log("Props pased to EditStepForm component: ", step)
-//  console.log("Props level: ", level)
+ console.log("Props level: ", level)
 //  console.log("Props step: ", step)
+
+const [levels, setLevels] = useState([]); //See with IAN. Solved putting []
+
+useEffect(() => {
+  axios.get(`${stepsURL}/levels`)
+    .then(function (res) {
+      setLevels([...res.data])
+      // console.log("res.data", res.data)
+    })
+}, [])
+
+
+// console.log(levels)
 
 const [title, setTitle] = useState(step.step_title)
 const [level_id, setLevel_id] = useState(step.level_id)
+
 
 const updateStep = async(e) => {
   e.preventDefault();
@@ -35,7 +49,7 @@ const updateStep = async(e) => {
       setLevel_id(6);
     }
 
-    const response = await fetch(`${stepsURL}/edit/${step.step_id}`, { //IAN response is assigned but not used
+    const response = await fetch(`${stepsURL}/steps/edit/${step.step_id}`, { //IAN response is assigned but not used
       method: "PUT",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(body),
@@ -100,19 +114,14 @@ data-target={`#id${step.step_id}`}
 
         {/* <select value={level} onChange={e => setLevel(e.target.value)} > */}
         {/* {Try to get these from the db so if we create more levels they appear automatically} */}
-        {/* <option></option> */}
-        <option>Beginner</option>
-        <option>Intermediate</option>
-        <option>Intermediate 2</option>
-        <option>Advanced</option>
-        <option>Advanced 2</option>
-        <option>Hardcore</option>
-        {/* <option>{level[0].title}</option>
-        <option>{level[1].title}</option>
-        <option>{level[2].title}</option>
-        <option>{level[3].title}</option>
-        <option>{level[4].title}</option>
-        <option>{level[5].title}</option> */}
+
+        {levels.map((level) =>
+                    <option key={level.id}>
+                      {level.title}
+                    </option>
+                  )}  
+
+       
       </select>
 
       </div>
