@@ -6,12 +6,13 @@ main {
   background-color: #e7e7e7;
 }
 
-/* table {
-  background-color: #e7e7e7;
-} */
+table {
+  border: solid #e7e7e7;
+}
 
-th, td {
+th, td, tr {
   background-color: #e7e7e7;
+  border: solid #e7e7e7;
 }
 
 .header null { /* Top bar */
@@ -31,8 +32,10 @@ th, td {
 .add_step_form {
 /* margin: 100px 200px 50px 200px;
 border: 1px solid grey; */
-padding-top: 40px;
+/* padding-top: 10px; */
 padding-bottom: 40px;
+
+
 }
 
 .add_step_title {
@@ -40,7 +43,7 @@ padding-bottom: 40px;
 }
 
 .input_box { /*Step, level */
-  background-color: #e7e7e7;
+  /* background-color: #e7e7e7; */
   border: none;
   border-bottom: 1px solid grey;
 }
@@ -83,7 +86,7 @@ main {
 }
 
 .fabars {
-margin-top: 5px;
+margin-top: 15px;
 float: left;
 }
 
@@ -106,7 +109,11 @@ float: left;
   color: grey;
   font-size: 2rem;
   cursor: pointer;
+  margin-top: 10px;
   margin-bottom: 25px;
+  background-color: none;
+  border: none;
+  border-radius: 50px;
 }
 
 .sidebar {
@@ -178,6 +185,21 @@ float: left;
   transform: .5s;
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  outline: 0
+}
+
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .modal-body {
   padding-top: 0px;
 }
@@ -205,6 +227,11 @@ float: left;
 
 /* all buttons */
 button { 
+
+}
+
+/* add buttons */
+.Button_Submit, .Button_Edit, .Button_Delete, .Button_Close {
   border-radius: 5px;
   padding: 6px 18px;
   color: white;
@@ -212,25 +239,7 @@ button {
   background-color: grey;
 }
 
-/* add buttons */
-.Button_Submit {
- 
-}
 
-/* edit buttons */
-.Button_Edit {
-
-}
-
-/* delete buttons */
-.Button_Delete {
-  background-color: black;
-}
-
-/* close modal */
-.Button_Close {
-
-}
 
 
 @media screen and (min-width: 768px) {
