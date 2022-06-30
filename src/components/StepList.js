@@ -3,18 +3,22 @@ import axios from 'axios';
 
 import EditStepForm from './EditStepForm';
 
-export default function NewStepList ({refresh, setRefresh}) {
+export default function NewStepList ({level, setLevel, step, setStep}) {
 
   const stepsURL = 'http://localhost:8001'
 
   const [steps, setSteps] = useState([])
 
+  console.log("steps before useeffect", steps)
+
 useEffect(() => {
   axios.get(`${stepsURL}/steps`)
   .then(function (res) {
     setSteps([...res.data])
+    console.log("State of variable 'LEVEL' on axios get: ", level)
+    console.log("axios get res.data:", res.data)
   })
-}, [refresh]) 
+}, [level, step]) 
 
 function deleteStep(stepId) {
   return axios.delete(`${stepsURL}/delete/${stepId}`)
@@ -49,7 +53,7 @@ return (
     <td>{step.level_title}</td>
     {/* <td>{step.level_id}</td> */}
     <td>{step.step_id}</td>
-    <td><EditStepForm step={step} refresh={refresh} setRefresh={setRefresh}/></td>
+    <td><EditStepForm step={step} level={level} setLevel={setLevel}/></td>
         <td><button className="Button_Delete" onClick={() => deleteStep(step.step_id)}>Delete</button></td>
   </tr>)}
 </tbody>
