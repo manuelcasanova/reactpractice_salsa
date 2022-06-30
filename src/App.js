@@ -1,20 +1,25 @@
 import React, {useState} from 'react';
 
 import './App.css';
-// import NewStepForm from './components/NewStepForm';
 // import StepList from './components/StepList';
 import Sidebar from './components/Sidebar/Sidebar';
 
-function App() {
+//this is for testing. it is a component, just not on a separate file
+// const OneStep = () => {
+//   return <div>
+//     <h1>One step</h1>
+//   </div>
+// }
 
-  // const [refresh, setRefresh] = useState(false);
+
+function App() {
 
   return (
     <div className="App">
       <Sidebar />
-      {/* <NewStepForm refresh={refresh} setRefresh={setRefresh}/>
-      <StepList refresh={refresh} setRefresh={setRefresh}/> */}
-      
+      {/*
+      <StepList /> */}
+      {/* <OneStep /> */}
     </div>
   );
 }
