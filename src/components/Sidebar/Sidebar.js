@@ -1,14 +1,16 @@
-import React, { useState, Fragments } from 'react';
+import React, { useState } from 'react';
 import './index.css'
 import { Link } from 'react-router-dom';
 
-import NewStepForm from '../NewStepForm';
 import StepList from '../StepList';
+import NewStepForm from '../NewStepForm';
 
 const Sidebar = () => {
 
   const [showw, setShoww] = useState(false)
-  const [refresh, setRefresh] = useState(false);
+  
+  const [level, setLevel] = useState("Beginner");
+  const [step, setStep] = useState();
 
   return (
     <main className={showw ? 'space-toggle' : null}>
@@ -18,7 +20,6 @@ const Sidebar = () => {
           <i className="fas fa-bars fabars"></i>
         </div>
         <i className="app_title">Casino Steps</i>
-        {/* <div></div> Added to leave hamburger menu on left and title on center */}
       </header>
 
       <aside className={`sidebar ${showw ? 'showw' : null}`}>
@@ -107,8 +108,9 @@ const Sidebar = () => {
         </nav>{/*enddiv classname nav*/}
       </aside>
 
-      <NewStepForm refresh={refresh} setRefresh={setRefresh} />
-      <StepList refresh={refresh} setRefresh={setRefresh} />
+  
+      <NewStepForm  level={level} setLevel={setLevel} step={step} setStep={setStep}/>
+      <StepList  level={level} setLevel={setLevel} step={step} setStep={setStep}/>
 
 
     </main>
