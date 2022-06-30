@@ -9,14 +9,14 @@ export default function NewStepList ({level, setLevel, step, setStep}) {
 
   const [steps, setSteps] = useState([])
 
-  console.log("steps before useeffect", steps)
+  // console.log("steps before useeffect", steps)
 
 useEffect(() => {
   axios.get(`${stepsURL}/steps`)
   .then(function (res) {
     setSteps([...res.data])
-    console.log("State of variable 'LEVEL' on axios get: ", level)
-    console.log("axios get res.data:", res.data)
+    // console.log("State of variable 'LEVEL' on axios get: ", level)
+    // console.log("axios get res.data:", res.data)
   })
 }, [level, step]) 
 

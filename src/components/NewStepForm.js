@@ -15,15 +15,7 @@ export default function NewStepForm({level, setLevel, step, setStep}) {
         setLevels([...res.data])
       })
     }, []) 
-
-    useEffect(() => {
-      axios.get(`${stepsURL}/steps`)
-      .then(function (res) {
-        setSteps([...steps, step])
-      })
-    }, []) 
     
-
   const stepsURL = 'http://localhost:8001'
 
   function addStep(step) {
@@ -36,7 +28,6 @@ export default function NewStepForm({level, setLevel, step, setStep}) {
         setStep([step])
       })
   } 
-  console.log("steps after add step", steps)
 
   function changeStep(e) {
     setTitle(e.target.value);
